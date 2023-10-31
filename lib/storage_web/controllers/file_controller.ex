@@ -1,6 +1,6 @@
 defmodule StorageWeb.FileController do
   use StorageWeb, :controller
-  @upload_path Application.compile_env(:storage, :upload_dir_path)
+  @upload_path Application.compile_env(:storage, :upload_dir_path, "/home/tusqasi/sandbox/distributed/files_default/")
 
   action_fallback StorageWeb.FallbackController
 
@@ -10,7 +10,6 @@ defmodule StorageWeb.FileController do
   end
 
   def create(conn, %{"file" => %Plug.Upload{path: path, filename: filename}}) do
-    IO.inspect(@upload_path)
 
     case File.exists?(@upload_path <> filename) do
       false -> File.cp(path, @upload_path <> filename)
@@ -18,7 +17,7 @@ defmodule StorageWeb.FileController do
     end
 
     conn
-    |> send_resp(:ok, "Uploaded")
+    |> send_resp(:ok, "Uploaded image\n")
   end
 
   def create(conn, %{"file" => file_params}) do

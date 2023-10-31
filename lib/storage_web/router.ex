@@ -7,7 +7,7 @@ defmodule StorageWeb.Router do
 
   scope "/api", StorageWeb do
     pipe_through :api
-    resources "/files", FileController, except: [:new, :edit]
+    post "/files/upload", FileController, :create
   end
 
   # Enable LiveDashboard in development
