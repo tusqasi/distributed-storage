@@ -18,4 +18,91 @@ defmodule Storage.FilesFixtures do
 
     file
   end
+
+  @doc """
+  Generate a image.
+  """
+  def image_fixture(attrs \\ %{}) do
+    {:ok, image} =
+      attrs
+      |> Enum.into(%{
+        filename: "some filename",
+        uploader: "7488a646-e31f-11e4-aace-600308960662"
+      })
+      |> Storage.Files.create_image()
+
+    image
+  end
+
+  @doc """
+  Generate a image.
+  """
+  def image_fixture(attrs \\ %{}) do
+    {:ok, image} =
+      attrs
+      |> Enum.into(%{
+        name: "some name",
+        scale: 120.5
+      })
+      |> Storage.Files.create_image()
+
+    image
+  end
+
+  @doc """
+  Generate a image.
+  """
+  def image_fixture(attrs \\ %{}) do
+    {:ok, image} =
+      attrs
+      |> Enum.into(%{
+        filename: "some filename",
+        scale: 42
+      })
+      |> Storage.Files.create_image()
+
+    image
+  end
+
+  @doc """
+  Generate a image.
+  """
+  def image_fixture(attrs \\ %{}) do
+    {:ok, image} =
+      attrs
+      |> Enum.into(%{
+        filename: "some filename"
+      })
+      |> Storage.Files.create_image()
+
+    image
+  end
+
+  @doc """
+  Generate a record.
+  """
+  def record_fixture(attrs \\ %{}) do
+    {:ok, record} =
+      attrs
+      |> Enum.into(%{
+        scale: 42
+      })
+      |> Storage.Files.create_record()
+
+    record
+  end
+
+  @doc """
+  Generate a record.
+  """
+  def record_fixture(attrs \\ %{}) do
+    {:ok, record} =
+      attrs
+      |> Enum.into(%{
+
+      })
+      |> Storage.Files.create_record()
+
+    record
+  end
 end
