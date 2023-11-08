@@ -5,8 +5,8 @@ defmodule Storage.Image do
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id
   schema "images" do
-    field :filename, :string
-    field :scale, :integer
+    field(:filename, :string)
+    field(:scale, :integer)
 
     timestamps()
   end
@@ -16,5 +16,11 @@ defmodule Storage.Image do
     image
     |> cast(attrs, [:filename, :scale])
     |> validate_required([:filename, :scale])
+  end
+
+  def new_image(attrs) do
+    %Storage.Image{}
+    |> Storage.Image.changeset(attrs)
+    |> Storage.Repo.insert()
   end
 end

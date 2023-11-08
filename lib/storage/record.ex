@@ -5,9 +5,8 @@ defmodule Storage.Record do
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id
   schema "records" do
-
-    field :user_id, :binary_id
-    field :image_id, :binary_id
+    field(:user_id, :binary_id)
+    field(:image_id, :binary_id)
 
     timestamps()
   end
@@ -19,13 +18,11 @@ defmodule Storage.Record do
     |> validate_required([:user_id, :image_id])
   end
 
-def new_image(attrs) do
-    {:ok, %Storage.Image{id: image_id}} = %Storage.Image{}
-    |> Storage.Image.changeset(attrs)
-    |> Storage.Repo.insert()
+  def new_record(attrs) do
+    {:ok, %Storage.Image{id: image_id}} = Storage.Image.new_image(attrs)
 
     %Storage.Record{}
-    |> Storage.Record.changeset(%{image_id: image_id, user_id: attrs["user_id"]})
+    |> changeset(%{image_id: image_id, user_id: attrs["user_id"]})
     |> Storage.Repo.insert()
-    end
+  end
 end

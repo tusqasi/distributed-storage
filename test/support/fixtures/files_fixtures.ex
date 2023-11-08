@@ -98,9 +98,7 @@ defmodule Storage.FilesFixtures do
   def record_fixture(attrs \\ %{}) do
     {:ok, record} =
       attrs
-      |> Enum.into(%{
-
-      })
+      |> Enum.into(%{})
       |> Storage.Files.create_record()
 
     record
