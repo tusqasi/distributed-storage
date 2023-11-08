@@ -1,13 +1,26 @@
 # Storage
 
-To start your Phoenix server:
+![Elixir](https://img.shields.io/badge/Elixir-441b59?style=for-the-badge&logo=elixir&logoColor=white)
+<img src="./banner.png">
 
-  * Run `mix setup` to install and setup dependencies
-  * Start Phoenix endpoint with `mix phx.server` or inside IEx with `iex -S mix phx.server`
+---
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+Takes a image, stores it to disk and make a record of it in the db.
 
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
+---
+
+Stuff done by the service:
+1. List for `POST` requests from the [compute service](https://github.com/tusqasi/distributed-compute)
+2. Save image to disk
+3. Make a record in the db
+
+## Requirements
+Go get `asdf-vm`
+```bash
+asdf plugin-add elixir
+asdf install
+mix deps.get
+```
 
 ## Learn more
 
